@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from todo.views import home_view,todo_detail_view,category_detail_view,tag_view
+from config.views import logout_view
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("",home_view),
+    path("logout/",logout_view,name="logout_view"),
+    path("category/<slug:category_slug>/todo/<int:id>/",todo_detail_view,name="todo_detail"),
+    path("category/<slug:category_slug>/",category_detail_view,name="category_detail"),
+    path("tag/<slug:tag_slug>/",tag_view,name="tag_view"),
 ]

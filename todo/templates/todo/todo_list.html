@@ -1,0 +1,22 @@
+{% extends "core/base.html" %}
+
+{% block container %}
+<h1 class="text-center my-4"> 
+    TODO LIST ( {{ todos.count }} ) {% if category %} 
+    <br><small class="text-muted fs-6">Kategori : {{ category }}</small>  <br>
+{% elif tag %}
+<br>
+<span class="badge rounded-pill  text-bg-light">
+   {{ tag }}
+   </span>{% endif %}
+</h1>
+{% for todo in todos %}
+<div class="col-sm-6 offset-3 my-2">
+    <div class="list-group">  
+        <a href="{{ todo.get_absolute_url }}" class="list-group-item list-group-item-action list-group-item-secondary">{{ todo.title }}</a>
+    </div>
+</div>
+
+
+{% endfor %}
+{% endblock container %}
